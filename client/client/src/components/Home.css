@@ -1,0 +1,29 @@
+.Home_col{
+    color: white;
+    min-height: 91.5vh;
+    max-height: auto;
+
+}
+.book_h2 .book_h3 {
+    font-size: 70px;
+    color: silver;
+}
+.book_p{
+    color: silver;
+}
+.book_button{
+    width: fit-content;
+    outline: none;
+    border: 1px solid white;
+    background-color: transparent;
+    padding: 5px 20px 5px 20px ;
+    color: white;
+    font-size: 10px;
+
+}
+
+.home_img{
+    width: 800px;
+    height: 90%;
+
+}
