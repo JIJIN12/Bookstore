@@ -12,7 +12,7 @@ const initialState = {
 
 export const postaddbook = createAsyncThunk('postaddbook', async (value) => {
     console.log(value);
-    const response = await axios.post('http://localhost:2000/book/addbook', value)
+    const response = await axios.post('https://bookstore-almt.onrender.com/book/addbook', value)
 
     console.log(response);
     return response
