@@ -6,6 +6,11 @@ export default function FeaturedB() {
     const [featured_data,setfeatured_data] = useState([])
     console.log(featured_data);
    
+
+    const featured_input = (e)=>{
+        const {name,value} = e.target
+        setfeatured_data({...featured_data,[name]:value})
+    }
     return (
         <div>
             <div className='featured_container'>
@@ -20,26 +25,26 @@ export default function FeaturedB() {
 
 
                         <ul className='featured_ul'>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#' } >Action & Adventure</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Arts ,Film & Photography</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Biographies, Diaries & True Accounts</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Business & Economics</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Children's Books</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Comics & Mangas</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Computing, Internet & Digital Media</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Crime, Thriller & Mystery</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Fantasy, Horror & Science Fiction</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Health, Family & Personal Development</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Historical Fiction</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>History</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Literature & Fiction</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Medicine & Health Sciences</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Romance</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>School Books</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Science & Mathematics</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Society & Social Sciences</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Sports</Link></li>
-                            <li className='featured_li'><Link className='featured_li_link' to={'#'}>Travel</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link'name='Action & Adventure' value={'Action & Adventure'} onClick={featured_input} >Action & Adventure</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Arts ,Film & Photography' value={'Arts ,Film & Photography'} onClick={featured_input}>Arts ,Film & Photography</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Biographies, Diaries & True Accounts' value={'Biographies, Diaries & True Accounts'} onClick={featured_input}>Biographies, Diaries & True Accounts</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Business & Economics' value={'Business & Economics'} onClick={featured_input}>Business & Economics</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Childrens Books' value={'Childrens Books'} onClick={featured_input}>Children's Books</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Computing, Internet & Digital Media' value={'Computing, Internet & Digital Media'} onClick={featured_input}>Computing, Internet & Digital Media</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Comics & Mangas' value={'Comics & Mangas'} onClick={featured_input}>Comics & Mangas</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Crime, Thriller & Mystery' value={'Crime, Thriller & Mystery'} onClick={featured_input}>Crime, Thriller & Mystery</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Fantasy, Horror & Science Fiction' value={'Fantasy, Horror & Science Fiction'} onClick={featured_input}>Fantasy, Horror & Science Fiction</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Health, Family & Personal Development' value={'Health, Family & Personal Development'} onClick={featured_input}>Health, Family & Personal Development</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Historical Fiction' value={'Historical Fiction'} onClick={featured_input}>Historical Fiction</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='History' value={'History'} onClick={featured_input}>History</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Literature & Fiction' value={'Literature & Fiction'} onClick={featured_input}>Literature & Fiction</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Medicine & Health Sciences' value={'Medicine & Health Sciences'} onClick={featured_input}>Medicine & Health Sciences</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Romance' value={'Romance'} onClick={featured_input}>Romance</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='School Books' value={'School Books'} onClick={featured_input}>School Books</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Science & Mathematics' value={'Science & Mathematics'} onClick={featured_input}>Science & Mathematics</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Society & Social Sciences' value={'Society & Social Sciences'} onClick={featured_input}>Society & Social Sciences</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Sports' value={'Sports'} onClick={featured_input}>Sports</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Travel' value={'Travel'} onClick={featured_input}>Travel</Link></li>
                         </ul>
                     </div>
 

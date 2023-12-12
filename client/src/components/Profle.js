@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 export default function Profle() {
     const [selectedSection, setSelectedSection] = useState('profile');
     const [usedata, setusedata] = useState([])
-    console.log(usedata.length);
+    console.log(usedata);
     console.log(selectedSection);
 
     const Token = localStorage.getItem('token')
@@ -102,7 +102,7 @@ export default function Profle() {
                         <h3 className='profile_text_h3'><b>Book uploaded</b></h3>
                         <p className='profile_text'>Number of book uploaded:{usedata.length}</p><br />
                         <h3 className='profile_text_h3'><b>Book Details</b></h3>
-                        {usedata.map((data, key) => (
+                        {usedata?.data.Details?.map((data, key) => (
 
                             <p className='profile_text'><b>Book name:</b>{data.bookname}</p>
 
