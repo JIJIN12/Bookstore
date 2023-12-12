@@ -99,13 +99,13 @@ bookRouter.post('/addbook', async function (req, res) {
 
 bookRouter.post('/uploads', cpUpload, async function (req, res) {
     try {
-        // console.log(req.files);
+        console.log(req.files);
         // console.log('body',req.body);
         if (req.files) {
             console.log('success');
             const imageFiles = req.files['image'];
             const bookPdfFiles = req.files['bookpdf'];
-
+            const Bookname = req.body.bookname.toUpperCase()
 
             // console.log('files',req.files);
             // const filedata = {
@@ -115,8 +115,16 @@ bookRouter.post('/uploads', cpUpload, async function (req, res) {
             //     bookpdf: req.files.bookpdf[0].path : null
             // }
             console.log(req.files.image[0].path);
+            console.log(req.body.bookname);
+            
+             const books = await bookmodel.findOne({ bookname: Bookname })
+             console.log('books',books);
 
-            const savefile = await bookmodel.updateOne({ bookname: req.body.bookname }, { $set: { image: req.files.image[0].path, bookpdf: req.files.bookpdf[0].path } })
+            const savefile = await bookmodel.updateOne({ bookname: Bookname }, { $set: { image: req.files.image[0].path, bookpdf: req.files.bookpdf[0].path } }).then((response)=>{
+                console.log(response);
+            }).catch((error)=>{
+                console.log('error',error);
+            })
 
 
 
@@ -247,7 +255,7 @@ bookRouter.post('/check', async function (req, res) {
                     const thrillerbook = await bookmodel.find({ bookgenre: 'thriller' })
                     filteredbook = filteredbook.concat(thrillerbook)
                 }
-               
+
             }
 
         }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Addbook.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { postaddbook, postaddbook_file } from './redux/slice/addbookslice'
@@ -43,9 +43,17 @@ export default function Addbook() {
     data.append('filename',filename)
     data.append('bookpdf',addbook_state.bookpdf)
     data.append('pdfname',addbook_state.bookpdf.name)
-    dispatch(postaddbook(addbook_state))
-    dispatch(postaddbook_file(data))
+    
+    for (var pair of data.entries()) {
+      console.log(pair[0]+ ', ' + pair[1]); 
+  }
+    useEffect(()=>{
+      dispatch(postaddbook(addbook_state))
 
+    },[])
+    dispatch(postaddbook_file( data ))
+   
+  
     // navigate('/book')
   }
 

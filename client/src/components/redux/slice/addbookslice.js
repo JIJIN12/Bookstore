@@ -29,7 +29,7 @@ export const postaddbook_file = createAsyncThunk('postaddbookfile', async (value
             "Content-Type": 'multipart/form-data'
         }
     })
-    console.log("response",response);
+    console.log(response);
     return response
 })
 
