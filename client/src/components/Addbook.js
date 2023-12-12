@@ -46,7 +46,7 @@ export default function Addbook() {
     dispatch(postaddbook(addbook_state))
     dispatch(postaddbook_file(data))
 
-    navigate('/book')
+    // navigate('/book')
   }
 
   return (

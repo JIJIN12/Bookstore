@@ -20,7 +20,7 @@ profileRouter.get('/', async function (req, res) {
 profileRouter.get('/activity', async function (req, res) {
     try {
         const prodileid = req.query.userid
-        const Activitydata = await bookmodel.findOne({ userid: prodileid })
+        const Activitydata = await bookmodel.find({ userid: prodileid })
         console.log(Activitydata);
         if (Activitydata) {
             return res.status(200).json({ success: true, error: false, Message: "Activity data found",Details: Activitydata })

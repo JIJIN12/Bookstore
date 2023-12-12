@@ -22,8 +22,6 @@ const navigate = useNavigate()
 
     dispatch(postLogin(loginstate))
     navigate('/')
-    
-
   }
 
   

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import './Profile.css'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
 export default function Profle() {
     const [selectedSection, setSelectedSection] = useState('profile');
-    const [usedata, setusedata] = useState({})
-    console.log(usedata);
+    const [usedata, setusedata] = useState([])
+    console.log(usedata.length);
     console.log(selectedSection);
-    
+
     const Token = localStorage.getItem('token')
     const userid = localStorage.getItem('userid')
 
     useEffect(() => {
         axios.get('http://localhost:2000/profile?userid=' + userid).then((Response) => {
+            console.log(Response);
             setusedata(Response.data.Details)
+
 
         })
     }, [userid])
@@ -40,6 +43,7 @@ export default function Profle() {
                 // }
             ).then((Response) => {
                 console.log(Response);
+                setusedata(Response.data.Details)
             })
         }
 
@@ -52,6 +56,16 @@ export default function Profle() {
     const Profilelogout = () => {
         localStorage.clear()
         window.location.reload();
+        toast.success('Logout successful', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     }
 
     const deleteprofile = () => {
@@ -65,14 +79,14 @@ export default function Profle() {
         switch (selectedSection) {
             case 'profile':
                 return (
-                        <div >
-                            {/* <img className="profile-picture" src={data.profilePicture} alt="Profile Picture" /> */}
-                            <div className="profile-name">Name:{usedata.FullName} </div>
-                            <div className="profile-name">Email:{usedata.Email} </div>
-                            <div className="profile-info">Job: </div>
-                            <div className="profile-info">Location: </div>
-                            {/* <button className="profile-button">Follow</button> */}
-                        </div>
+                    <div >
+                        {/* <img className="profile-picture" src={data.profilePicture} alt="Profile Picture" /> */}
+                        <div className="profile-name">Name:{usedata.FullName} </div>
+                        <div className="profile-name">Email:{usedata.Email} </div>
+                        <div className="profile-info">Job: </div>
+                        <div className="profile-info">Location: </div>
+                        {/* <button className="profile-button">Follow</button> */}
+                    </div>
                 );
 
 
@@ -80,13 +94,22 @@ export default function Profle() {
             case 'activity':
                 return (
                     <div>
+
+
                         <h1 className="profile-heading">Activity</h1>
                         <p className="profile-text">This is the activity section.</p>
                         {/* <h1>works</h1> */}
                         <h3 className='profile_text_h3'><b>Book uploaded</b></h3>
-                        <p className='profile_text'>Number of book uploaded:</p><br />
+                        <p className='profile_text'>Number of book uploaded:{usedata.length}</p><br />
                         <h3 className='profile_text_h3'><b>Book Details</b></h3>
-                        <p className='profile_text'>Book name:</p>
+                        {usedata.map((data, key) => (
+
+                            <p className='profile_text'><b>Book name:</b>{data.bookname}</p>
+
+                        ))}
+
+
+
                     </div>
                 );
             case 'settings':
@@ -106,7 +129,20 @@ export default function Profle() {
         }
     };
     return (
+
         <div className='profile_body'>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <div className='prodile_heading row'>
                 <h1 className='profile_h1'>Profile </h1>
 

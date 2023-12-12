@@ -7,6 +7,8 @@ const registerRouter = require('./src/route/registerRouter')
 const bookRouter = require('./src/route/bookRouter')
 const favRouter = require('./src/route/favouriteRouter')
 const profileRouter = require('./src/route/profileRouter')
+const authorRouter = require('./src/route/authorRouter')
+const featuredRouter = require('./src/route/featuredRouter')
 const app = express()
 
 app.use(cors())
@@ -29,7 +31,9 @@ app.use((req, res, next) => {
 app.use('/login',loginRouter)
 app.use('/register',registerRouter)
 app.use('/book',bookRouter)
+app.use('/author',authorRouter)
 app.use('/favourite',favRouter)
+app.use('/featured',featuredRouter)
 app.use('/profile',profileRouter)
 
 const url = 'mongodb+srv://jijinsuresh6:jijinsuresh6@cluster0.dh7smys.mongodb.net/BOOKSTORE_SERVER?retryWrites=true&w=majority'

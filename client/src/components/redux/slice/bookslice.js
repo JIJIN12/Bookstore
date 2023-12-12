@@ -21,9 +21,12 @@ export const postbook = createAsyncThunk('postbook',async ()=>{
 
 export const postchecked = createAsyncThunk('postchecked',async(value)=>{
     const response = await axios.post('http://localhost:2000/book/check',value)
-    console.log(response);
+    console.log(response.data.Details);
     return response
 })
+
+
+
 
  const bookSlice = createSlice({
     name:'book',

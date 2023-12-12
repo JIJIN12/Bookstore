@@ -11,19 +11,22 @@ const initialState = {
 }
 
 export const postaddbook = createAsyncThunk('postaddbook', async (value) => {
-    console.log(value);
-    const response = await axios.post('https://bookstore-almt.onrender.com/book/addbook', value)
-
-    console.log(response);
-    return response
+    try {
+        console.log('value', value);
+        const response = await axios.post('http://localhost:2000/book/addbook', value)
+        console.log("response", response);
+        return response
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 
 export const postaddbook_file = createAsyncThunk('postaddbookfile', async (value) => {
     console.log(value);
-    const response = await axios.post('http://localhost:2000/book/uploads', value,{
-        headers:{
-            "Content-Type":'multipart/form-data'
+    const response = await axios.post('http://localhost:2000/book/uploads', value, {
+        headers: {
+            "Content-Type": 'multipart/form-data'
         }
     })
     console.log(response);

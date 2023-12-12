@@ -34,8 +34,6 @@ const upload = multer({ storage: storage })
 const cpUpload = upload.fields([
     { name: 'image', maxCount: 1 },
     { name: 'bookpdf', maxCount: 8 }
-
-
 ]);
 
 
@@ -60,18 +58,22 @@ bookRouter.get('/', async function (req, res) {
 bookRouter.post('/addbook', async function (req, res) {
     try {
         console.log(req.body.user_id);
+        // console.log("body",req.body);
+        // console.log('image',req.files['image'][0].path );
 
-        // const genre = req.body.bookgenre.toLowerCase()
+        const genre = req.body.bookgenre.toLowerCase()
+        const Bookname = req.body.bookname.toUpperCase()
+        console.log('Bookname', Bookname);
         const bookdata = {
             userid: req.body.user_id,
-            bookname: req.body.bookname,
+            bookname: Bookname,
             bookdescription: req.body.bookdescription,
             author: req.body.author,
-            bookgenre: req.body.bookgenre,
+            bookgenre: genre,
             // image: req.body.filename,
             // bookpdf: req.body.pdfname,
-            image: req.file ? req.file.path : null,
-            bookpdf: req.file ? req.file.path : null
+            image: req.files ? req.files.path : null,
+            bookpdf: req.files ? req.files.path : null
         }
 
 
@@ -98,33 +100,34 @@ bookRouter.post('/addbook', async function (req, res) {
 bookRouter.post('/uploads', cpUpload, async function (req, res) {
     try {
         // console.log(req.files);
-        console.log('body',req.body);
-        console.log('files');
+        // console.log('body',req.body);
         if (req.files) {
             console.log('success');
             const imageFiles = req.files['image'];
             const bookPdfFiles = req.files['bookpdf'];
 
-            console.log(req.files);
+
+            // console.log('files',req.files);
             // const filedata = {
-                
+
             //     image: req.files.image[0].path : null,
-                
+
             //     bookpdf: req.files.bookpdf[0].path : null
             // }
+            console.log(req.files.image[0].path);
 
-            const savefile = await bookmodel.updateOne({bookname:req.body.bookname},{$set:{image:req.files.image[0].path,bookpdf:req.files.bookpdf[0].path}})
+            const savefile = await bookmodel.updateOne({ bookname: req.body.bookname }, { $set: { image: req.files.image[0].path, bookpdf: req.files.bookpdf[0].path } })
 
 
 
 
-            
 
-const fileupload = await bookmodel.aggregate([
-    {
 
-    }
-])
+            // const fileupload = await bookmodel.aggregate([
+            //     {
+
+            //     }
+            // ])
 
             // const imageFiles = req.file.path;
             // const bookPdfFiles = req.file.path;
@@ -215,6 +218,7 @@ bookRouter.post('/check', async function (req, res) {
 
         if (selectedGenre == 0) {
             filteredbook = await bookmodel.find()
+
         }
 
         else {
@@ -243,6 +247,7 @@ bookRouter.post('/check', async function (req, res) {
                     const thrillerbook = await bookmodel.find({ bookgenre: 'thriller' })
                     filteredbook = filteredbook.concat(thrillerbook)
                 }
+               
             }
 
         }
