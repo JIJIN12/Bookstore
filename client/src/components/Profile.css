@@ -47,8 +47,8 @@
 .profile-container {
     display: flex;
     max-width: 800px;
-    height: 400px;
-    max-height: 700px;
+    /* height: 400px; */
+    max-height: fit-content;
     margin: 50px auto;
     margin-bottom: 80px;
     background-color: #fff;

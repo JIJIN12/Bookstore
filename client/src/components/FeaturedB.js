@@ -1,16 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './FeaturedB.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 export default function FeaturedB() {
-    const [featured_data,setfeatured_data] = useState([])
-    console.log(featured_data);
-   
+    const [featured_data, setfeatured_data] = useState([])
+    const [data, set_data] = useState([])
+    // console.log(featured_data);
+    console.log(data);
 
-    const featured_input = (e)=>{
-        const {name,value} = e.target
-        setfeatured_data({...featured_data,[name]:value})
+    const featured_input = (e) => {
+        const { name } = e.target
+        
+
+       const filtered_data = featured_data.filter((data)=>{
+        return data.bookgenre==name
+        
+       })
+       set_data(filtered_data)
     }
+
+    useEffect(()=>{
+        axios.get('http://localhost:2000/featured').then((Response)=>{
+            
+            setfeatured_data(Response.data.Details)
+        })
+        console.log('kk');
+    },[])
     return (
         <div>
             <div className='featured_container'>
@@ -18,6 +34,7 @@ export default function FeaturedB() {
                     <h1 className='featured_h1'>Bestsellers</h1>
                 </div>
                 <h4 className='featured_h4'>Our most popular products based on sales.Updated frequently.</h4>
+                <Link to={'/book/addbook'}> <button class="addfeatured_button" role="button">Addbook</button></Link><br/>
 
                 <div className='featuredgrid'>
                     <div className=' book_option'>
@@ -25,7 +42,7 @@ export default function FeaturedB() {
 
 
                         <ul className='featured_ul'>
-                            <li className='featured_li'><Link className='featured_li_link'name='Action & Adventure' value={'Action & Adventure'} onClick={featured_input} >Action & Adventure</Link></li>
+                            <li className='featured_li'><Link className='featured_li_link' name='Action & Adventure' value={'Action & Adventure'} onClick={featured_input} >Action & Adventure</Link></li>
                             <li className='featured_li'><Link className='featured_li_link' name='Arts ,Film & Photography' value={'Arts ,Film & Photography'} onClick={featured_input}>Arts ,Film & Photography</Link></li>
                             <li className='featured_li'><Link className='featured_li_link' name='Biographies, Diaries & True Accounts' value={'Biographies, Diaries & True Accounts'} onClick={featured_input}>Biographies, Diaries & True Accounts</Link></li>
                             <li className='featured_li'><Link className='featured_li_link' name='Business & Economics' value={'Business & Economics'} onClick={featured_input}>Business & Economics</Link></li>
@@ -49,15 +66,20 @@ export default function FeaturedB() {
                     </div>
 
                     <div className=' featured_grid_wrap'>
-                        <div className=' featured_col'>
-                            <div className="card featured_card" style={{ width: "18rem" }}>
-                                <img src="..." className="card-img-top featured_card_img" alt="..." />
+
+                        {data[0]?
+                        data.map((data1,key)=>(
+                            <div className=' featured_col'>
+                            <div className="card featured_card" style={{ width: "25rem" }}>
+                                <div className='img_div'>
+                                <img src={data1.image} className="card-img-top featured_card_img"  alt="..." />
+
+                                    </div>
+                                <h3  className='featured_h3'><b>{data1.bookname}</b></h3>
                                 <div className="card-body featured_card_body">
-                                    <h5 className="card-title featured_h5">Card title</h5>
-                                    <p className="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </p>
+                                    <h5 className="card-title featured_h5"><b>Genre:</b>{data1.bookgenre}</h5>
+                                    <h5 className="card-title featured_h5"><b>Author:</b> {data1.author}</h5>
+                                    
 
                                     <div className='d-flex justify-content-around mb-5 '>
                                         <h3 className='sub-featuredbook_h1'>$120</h3>
@@ -66,6 +88,29 @@ export default function FeaturedB() {
                                 </div>
                             </div>
                         </div>
+                        )) :
+                        featured_data?.map((data,key)=>(
+                            <div className=' featured_col'>
+                            <div className="card featured_card" style={{ width: "25rem" }}>
+                                <div className='img_div'>
+                                <img src={data.image} className="card-img-top featured_card_img"  alt="..." />
+
+                                    </div>
+                                <h3  className='featured_h3'><b>{data.bookname}</b></h3>
+                                <div className="card-body featured_card_body">
+                                    <h5 className="card-title featured_h5"><b>Genre:</b>{data.bookgenre}</h5>
+                                    <h5 className="card-title featured_h5"><b>Author:</b> {data.author}</h5>
+                                    
+
+                                    <div className='d-flex justify-content-around mb-5 '>
+                                        <h3 className='sub-featuredbook_h1'>$120</h3>
+                                        <button className='featured_card_button btn btn-primary'>Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        ))}
+                        
                     </div>
                 </div>
             </div>

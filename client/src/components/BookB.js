@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { post_favourite } from './redux/slice/favSlice'
 export default function BookB() {
+
     const { id } = useParams()
     const dispatch = useDispatch()
     const { book_data, checked_data } = useSelector(state => state.book)

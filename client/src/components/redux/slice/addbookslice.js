@@ -30,7 +30,9 @@ export const postaddbook_file = createAsyncThunk('postaddbookfile', async (value
         }
     })
     console.log(response);
+    
     return response
+    
 })
 
 

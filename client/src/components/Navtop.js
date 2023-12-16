@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom'
 export default function Navtop() {
   const token = localStorage.getItem('token')
 const navigate = useNavigate()
-  // useEffect(()=>{
-  //   if(token==null){
-  //     navigate('/login')
-  //   }
-  // },[])
+  useEffect(()=>{
+    if(token==null){
+      navigate('/login')
+    }
+  },[])
   return (
     <div>
       <div className=''>

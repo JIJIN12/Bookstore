@@ -18,6 +18,8 @@ export default function Addbook() {
     user_id: userid
   })
 
+  const [fstate, set_fstate] = useState(false)
+
   // const [file, set_file] = useState()
   console.log(addbook_state);
 
@@ -35,26 +37,32 @@ export default function Addbook() {
     console.log(filename);
     // data.append("filename", filename)
     // data.append('file', file)
-    data.append('bookname',addbook_state.bookname)
-    data.append('bookgenre',addbook_state.bookgenre)
-    data.append('author:',addbook_state.author)
-    data.append('bookdescription',addbook_state.bookdescription)
-    data.append('image',addbook_state.image)
-    data.append('filename',filename)
-    data.append('bookpdf',addbook_state.bookpdf)
-    data.append('pdfname',addbook_state.bookpdf.name)
-    
-    for (var pair of data.entries()) {
-      console.log(pair[0]+ ', ' + pair[1]); 
-  }
-    useEffect(()=>{
-      dispatch(postaddbook(addbook_state))
+    data.append('bookname', addbook_state.bookname)
+    data.append('bookgenre', addbook_state.bookgenre)
+    data.append('author:', addbook_state.author)
+    data.append('bookdescription', addbook_state.bookdescription)
+    data.append('image', addbook_state.image)
+    data.append('filename', filename)
+    data.append('bookpdf', addbook_state.bookpdf)
+    data.append('pdfname', addbook_state.bookpdf.name)
 
-    },[])
-    dispatch(postaddbook_file( data ))
-   
-  
-    // navigate('/book')
+    for (var pair of data.entries()) {
+      console.log(pair[0] + ', ' + pair[1]);  //to console formdata
+    }
+    if (fstate == false) {
+
+    }
+    dispatch(postaddbook(addbook_state))
+
+
+    setTimeout(() => {
+      dispatch(postaddbook_file(data));
+      setTimeout(() => {
+        navigate('/book')
+      }, 2000);
+    }, 2000);
+
+
   }
 
   return (
@@ -70,12 +78,12 @@ export default function Addbook() {
             <span >image</span>
             <input type='file' name='image' className='box' placeholder='image' accept='image/*' onChange={(e) => {
               // set_file(e.target.files[0]);
-              set_addbookstate({ ...addbook_state, 'image': e.target.files[0],'filename': e.target.files[0].name });console.log(e.target.files[0].name);
+              set_addbookstate({ ...addbook_state, 'image': e.target.files[0], 'filename': e.target.files[0].name }); console.log(e.target.files[0].name);
             }} />
             <span>Book pdf</span>
             <input type='file' name='bookpdf' className='box' placeholder='pdf' accept='.pdf' onChange={(e) => {
               // set_file(e.target.files[0]);
-              set_addbookstate({ ...addbook_state, 'bookpdf': e.target.files[0], 'pdfname':e.target.files[0].name });console.log(e.target.files[0].name);
+              set_addbookstate({ ...addbook_state, 'bookpdf': e.target.files[0], 'pdfname': e.target.files[0].name }); console.log(e.target.files[0].name);
             }} />
             <span >Genre</span>
             <input type='text' name='bookgenre' className='box' placeholder='Enter Genre' onChange={book_input} />

@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 export default function Profle() {
     const [selectedSection, setSelectedSection] = useState('profile');
     const [usedata, setusedata] = useState([])
+    const [activity_data,set_activity] = useState([])
     console.log(usedata);
     console.log(selectedSection);
 
@@ -18,7 +19,7 @@ export default function Profle() {
 
 
         })
-    }, [userid])
+    }, [])
 
     // Function to update the selected section
     const handleSectionClick = (section) => {
@@ -35,6 +36,7 @@ export default function Profle() {
             })
         }
         if (section == 'activity') {
+            console.log("hii");
             axios.get('http://localhost:2000/profile/activity?userid=' + userid
                 //  {
                 //     headers: {
@@ -43,7 +45,7 @@ export default function Profle() {
                 // }
             ).then((Response) => {
                 console.log(Response);
-                setusedata(Response.data.Details)
+                set_activity(Response.data.Details)
             })
         }
 
@@ -93,23 +95,18 @@ export default function Profle() {
 
             case 'activity':
                 return (
-                    <div>
-
-
+                    <div className='activity_body'>
                         <h1 className="profile-heading">Activity</h1>
                         <p className="profile-text">This is the activity section.</p>
                         {/* <h1>works</h1> */}
                         <h3 className='profile_text_h3'><b>Book uploaded</b></h3>
-                        <p className='profile_text'>Number of book uploaded:{usedata.length}</p><br />
+                        <p className='profile_text'>Number of book uploaded:{activity_data.length}</p><br />
                         <h3 className='profile_text_h3'><b>Book Details</b></h3>
-                        {usedata?.data.Details?.map((data, key) => (
+                        {activity_data?.map((data, key) => (
 
-                            <p className='profile_text'><b>Book name:</b>{data.bookname}</p>
+                            <p className='profile_text'><b>{key+1}. Book name:</b>{data.bookname}</p>
 
                         ))}
-
-
-
                     </div>
                 );
             case 'settings':

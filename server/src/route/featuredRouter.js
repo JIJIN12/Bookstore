@@ -41,10 +41,11 @@ featuredRouter.get('/', async function (req, res) {
 featuredRouter.post('/addfeatured', mulupload, async function (req, res) {
     try {
         console.log('0');
+        console.log(req.files);
 
         if (req.files) {
-            const imageFiles = req.files['image'];
-            const bookPdfFiles = req.files['bookpdf'];
+            const imageFiles = req.files['featured_image:'];
+            const bookPdfFiles = req.files['featured_pdf'];
         }
         console.log('1');
         const data = {
@@ -53,8 +54,8 @@ featuredRouter.post('/addfeatured', mulupload, async function (req, res) {
             // bookdescription: req.body.bookdescription,
             author: req.body.author,
             bookgenre: req.body.bookgenre,
-            image: req.files ? req.files.image[0].path : null,
-            bookpdf: req.files ? req.files.bookpdf[0].path : null
+            image: req.files ? req.files.featured_image[0].path : null,
+            bookpdf: req.files ? req.files.featured_pdf[0].path : null
         }
         console.log('2');
 
@@ -72,14 +73,7 @@ featuredRouter.post('/addfeatured', mulupload, async function (req, res) {
     }
 })
 
-featuredRouter.get('featured/:bookgenre',async function(req,res){
-    try {
-        const bookgenre = req.params.bookgenre
 
-    } catch (error) {
-        
-    }
-})
 
 
 module.exports = featuredRouter

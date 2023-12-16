@@ -167,7 +167,7 @@ bookRouter.get('/editbook/:id', async function (req, res) {
 
         }
         else {
-            return res.status(400).json({ success: False, error: true, message: "editbook error" })
+            return res.status(400).json({ success: false, error: true, message: "editbook error" })
 
         }
     } catch (error) {
