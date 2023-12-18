@@ -5,7 +5,6 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary')
 const authormodel = require('../model/authormodel')
 const authorRouter = express.Router()
 
-
 cloudinary.config({
     cloud_name:'ddjp6omvg',
     api_key:'123553778373481',
