@@ -41,4 +41,39 @@ featuredRouter.get('/', async function (req, res) {
 })
 
 
+featuredRouter.post('/addfeatured', mulupload, async function (req, res) {
+    try {
+        console.log('0');
+        console.log(req.files);
+
+        if (req.files) {
+            const imageFiles = req.files['featured_image:'];
+            const bookPdfFiles = req.files['featured_pdf'];
+        }
+        console.log('1');
+        const data = {
+            userid: req.body.user_id,
+            bookname: req.body.bookname,
+            // bookdescription: req.body.bookdescription,
+            author: req.body.author,
+            bookgenre: req.body.bookgenre,
+            image: req.files ? req.files.featured_image[0].path : null,
+            bookpdf: req.files ? req.files.featured_pdf[0].path : null
+        }
+        console.log('2');
+
+
+        const addfeatured = await featuredmodel(data).save()
+        console.log('3');
+
+        if (addfeatured) {
+            return res.status(200).json({ success: "true", error: "false", Message: "Book added", details: addfeatured })
+
+        }
+    } catch (error) {
+        return res.status(400).json({ success: false, error: true, message: "Something went wrong" })
+
+    }
+})
+
 module.exports = featuredRouter
