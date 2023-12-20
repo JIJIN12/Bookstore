@@ -42,7 +42,7 @@ const navigate = useNavigate()
 
             <input type='submit' value={'signin'} className='btn' onClick={submit}/>
             <p>forget password?<a href='#'>Click here</a></p>
-            <p>Dont't have an account?<a href='#'>Click here</a></p>
+            <p>Dont't have an account?<a href='/register'>Click here</a></p>
         </form>
       </div>
     </div>
