@@ -11,6 +11,7 @@ export default function Profle() {
 
     const Token = localStorage.getItem('token')
     const userid = localStorage.getItem('userid')
+    console.log(userid);
 
     useEffect(() => {
         axios.get('https://bookstore-7000.onrender.com/profile?userid=' + userid).then((Response) => {
