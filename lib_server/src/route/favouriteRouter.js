@@ -38,4 +38,72 @@ favRouter.get('/:id', CheckAuth, async function (req, res) {
     }
 })
 
+favRouter.get('/fav/useritems/:id',async function(req,res){
+    try {
+        const userid = req.params.id
+        console.log(userid);
+
+        const favitem = await favourite_model.aggregate([
+            {
+              '$lookup': {
+                'from': 'book_tbs', 
+                'localField': 'bookid', 
+                'foreignField': '_id', 
+                'as': 'books'
+              }
+            },
+            {
+                '$unwind':'$books'
+            },
+            {
+                '$match':{
+                    userid: new mongoose.Types.ObjectId(userid)
+                }
+            },
+            {
+                '$group':{
+                    '_id':'$_id',
+                    'bookname':{'$first':'$books.bookname'},
+                    'image':{'$first':'$books.image'},
+                    'bookdescription':{'$first':'$books.bookdescription'},
+                    'author':{'$first':'$books.author'},
+                    'bookgenre':{'$first':'$books.bookgenre'},
+                }
+            }
+          ])
+        console.log(favitem);
+        if(favitem[0]){
+            return res.status(200).json({ success: "true", error: "false",  details: favitem })
+
+        }
+        else{
+            return res.status(400).json({ success: "false", error: "true", Message: "favourite data not found" })
+
+        }
+    } catch (error) {
+        return res.status(400).json({ success: false, error: true, message: "Something went wrong" })
+        
+    }
+})
+
+
+
+favRouter.post('/delete/:id',async function (req,res){
+    try {
+        const id = req.params.id
+        console.log('id',id);
+        const delete_fav = await favourite_model.deleteOne({_id:id})
+        if(delete_fav){
+            return res.status(200).json({ success: "true", error: "false",  Message:'Removal Succesfull' })
+
+        }
+        else{
+            return res.status(400).json({ success: "false", error: "true", Message: "Error" })
+
+        }
+    } catch (error) {
+        return res.status(400).json({ success: false, error: true, message: "Something went wrong" })
+    }
+})
+
 module.exports = favRouter
