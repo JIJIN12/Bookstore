@@ -26,7 +26,7 @@ export default function Author() {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:2000/author').then((Response) => {
+        axios.get('https://bookstore-7000.onrender.com/author').then((Response) => {
             set_authordata(Response.data.Details)
         })
     }, [])

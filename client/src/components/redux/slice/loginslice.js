@@ -11,7 +11,7 @@ const initialState = {
 
 export const postLogin = createAsyncThunk('postLogin',async (value)=>{
     console.log(value);
-    const response = await axios.post('http://localhost:2000/login',value)
+    const response = await axios.post('https://bookstore-7000.onrender.com/login',value)
 
     console.log(response);
     return response

@@ -13,7 +13,7 @@ export default function Profle() {
     const userid = localStorage.getItem('userid')
 
     useEffect(() => {
-        axios.get('http://localhost:2000/profile?userid=' + userid).then((Response) => {
+        axios.get('https://bookstore-7000.onrender.com/profile?userid=' + userid).then((Response) => {
             console.log(Response);
             setusedata(Response.data.Details)
 
@@ -24,7 +24,7 @@ export default function Profle() {
     // Function to update the selected section
     const handleSectionClick = (section) => {
         if (section == 'profile') {
-            axios.get('http://localhost:2000/profile?userid=' + userid
+            axios.get('https://bookstore-7000.onrender.com/profile?userid=' + userid
                 //  {
                 //     headers: {
                 //         Authorization: `Bearer  ${Token}`
@@ -37,7 +37,7 @@ export default function Profle() {
         }
         if (section == 'activity') {
             console.log("hii");
-            axios.get('http://localhost:2000/profile/activity?userid=' + userid
+            axios.get('https://bookstore-7000.onrender.com/profile/activity?userid=' + userid
                 //  {
                 //     headers: {
                 //         Authorization: `Bearer  ${Token}`
@@ -71,7 +71,7 @@ export default function Profle() {
     }
 
     const deleteprofile = () => {
-        axios.get(`http://localhost:2000/profile/deleteprofile/${userid}`).then((response) => {
+        axios.get(`https://bookstore-7000.onrender.com/profile/deleteprofile/${userid}`).then((response) => {
             console.log(response);
         })
     }

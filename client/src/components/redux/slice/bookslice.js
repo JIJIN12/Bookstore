@@ -11,7 +11,7 @@ const initialState = {
 }
 
 export const postbook = createAsyncThunk('postbook',async ()=>{
-    const response = await axios.get('http://localhost:2000/book')
+    const response = await axios.get('https://bookstore-7000.onrender.com/book')
 
     console.log(response);
     return response
@@ -20,7 +20,7 @@ export const postbook = createAsyncThunk('postbook',async ()=>{
 
 
 export const postchecked = createAsyncThunk('postchecked',async(value)=>{
-    const response = await axios.post('http://localhost:2000/book/check',value)
+    const response = await axios.post('https://bookstore-7000.onrender.com/book/check',value)
     console.log(response.data.Details);
     return response
 })

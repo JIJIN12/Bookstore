@@ -9,7 +9,7 @@ const initialState = {
 export const registrataion = createAsyncThunk('registrataion',async (value)=>{
     console.log(value);
     const requestBody = JSON.stringify(value);
-    const response = await fetch('http://localhost:2000/register',{
+    const response = await fetch('https://bookstore-7000.onrender.com/register',{
         method:'POST',
         body:requestBody,
         headers:{

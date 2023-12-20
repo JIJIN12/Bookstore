@@ -48,7 +48,7 @@ export default function Addfeatured() {
         console.log(pair[0] + ", " + pair[1]); //to console formdata
       }
       axios
-        .post("http://localhost:2000/featured/addfeatured", data)
+        .post("https://bookstore-7000.onrender.com/featured/addfeatured", data)
         .then((Response) => {
           console.log(Response);
         })

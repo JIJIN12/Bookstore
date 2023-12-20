@@ -13,7 +13,7 @@ const initialState = {
 export const postaddbook = createAsyncThunk('postaddbook', async (value) => {
     try {
         console.log('value', value);
-        const response = await axios.post('http://localhost:2000/book/addbook', value)
+        const response = await axios.post('https://bookstore-7000.onrender.com/book/addbook', value)
         console.log("response", response);
         return response
     } catch (error) {
@@ -24,7 +24,7 @@ export const postaddbook = createAsyncThunk('postaddbook', async (value) => {
 
 export const postaddbook_file = createAsyncThunk('postaddbookfile', async (value) => {
     console.log(value);
-    const response = await axios.post('http://localhost:2000/book/uploads', value, {
+    const response = await axios.post('https://bookstore-7000.onrender.com/book/uploads', value, {
         headers: {
             "Content-Type": 'multipart/form-data'
         }

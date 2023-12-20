@@ -14,12 +14,12 @@ console.log(token);
 
 export const post_favourite = createAsyncThunk('postfavourite', async (id) => {
     console.log('kkkk');
-    // const response = await axios.get(`http://localhost:2000/favourite/${id}`, {
+    // const response = await axios.get(`https://bookstore-7000.onrender.com/favourite/${id}`, {
     //     headers: {
     //         'Authorization': `bearer ${token}`
     //     },
     // })
-    const response = await fetch(`http://localhost:2000/favourite/${id}`, {
+    const response = await fetch(`https://bookstore-7000.onrender.com/favourite/${id}`, {
         method: 'GET',
         headers: {
             'Authorization': `bearer ${token}`
@@ -49,7 +49,7 @@ export const post_favourite = createAsyncThunk('postfavourite', async (id) => {
 export const get_favourite = createAsyncThunk('getfav', async (id) => {
 
 
-    const response = await fetch(`http://localhost:2000/favourite/fav/useritems/${id}`, {
+    const response = await fetch(`https://bookstore-7000.onrender.com/favourite/fav/useritems/${id}`, {
         method: 'GET',
         headers: {
             'Authorization': `bearer ${token}`
@@ -64,7 +64,7 @@ export const get_favourite = createAsyncThunk('getfav', async (id) => {
 
 
 export const delete_fav = createAsyncThunk('deltefav', async (id) => {
-    const response = await fetch(`http://localhost:2000/favourite/delete/${id}`, {
+    const response = await fetch(`https://bookstore-7000.onrender.com/favourite/delete/${id}`, {
         method: 'POST',
         headers: {
             'Authorization': `bearer${token}`

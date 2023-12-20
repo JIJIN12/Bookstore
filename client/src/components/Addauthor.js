@@ -17,13 +17,13 @@ export default function Addauthor() {
       data.append("name", filename)
       data.append("file", file)
       console.log(data);
-      axios.post('http://localhost:2000/author/uploads', data).then((Response) => {
+      axios.post('https://bookstore-7000.onrender.com/author/uploads', data).then((Response) => {
         console.log(Response);
       }).catch((error) => {
         console.log(error);                                                           //-to add file
       })
     }
-    axios.post('http://localhost:2000/author/addauthor', addauthor_state).then((Response) => {
+    axios.post('https://bookstore-7000.onrender.com/author/addauthor', addauthor_state).then((Response) => {
       console.log(Response);
     }).catch((error) => {
       console.log(error);

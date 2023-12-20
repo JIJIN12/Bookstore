@@ -21,7 +21,7 @@ export default function FeaturedB() {
     }
 
     useEffect(()=>{
-        axios.get('http://localhost:2000/featured').then((Response)=>{
+        axios.get('https://bookstore-7000.onrender.com/featured').then((Response)=>{
             
             setfeatured_data(Response.data.Details)
         })
