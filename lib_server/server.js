@@ -4,6 +4,7 @@ const bodyparser = require("body-parser");
 const cors = require('cors')
 const authorRouter = require("./src/route/authorRouter");
 const bookRouter = require("./src/route/bookRouter");
+const favRouter = require("./src/route/favouriteRouter");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 
 app.use("/author", authorRouter);
 app.use("/book", bookRouter);
+app.use("/favourite", favRouter);
 
 const url =
   "mongodb+srv://jijinsuresh6:jijinsuresh6@cluster0.dh7smys.mongodb.net/BOOKSTORE_SERVER?retryWrites=true&w=majority";
