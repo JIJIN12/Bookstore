@@ -7,10 +7,10 @@ export default function Loginpage() {
   return (
     <div>
       <Navtop/>
-      {/* <div className='login-container'> */}
+      <div className='login-container'>
       <Login/>
 
-      {/* </div> */}
+      </div>
       <Navbottom/>
     </div>
   )
