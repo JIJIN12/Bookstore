@@ -119,7 +119,7 @@ export default function BookB() {
 
                             checked_data?.map((data, key) => (
 
-                                <div className='col    '>
+                                <div className='col book_col'>
                                     <div className="card book_card" style={{ width: "18rem" }}>
                                         <img src={data.image} className="card-img-top card_img" alt="..." />
 

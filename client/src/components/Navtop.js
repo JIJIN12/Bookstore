@@ -54,7 +54,7 @@ const navigate = useNavigate()
               {/* <a href='/arrival ' className='header_2_a'>ARRIVALS</a> */}
               <a href='/author' className='header_2_a'>AUTHOR</a>
               <a href='/book' className='header_2_a'>BOOKS</a>
-              <a href='' className='header_2_a'>BLOGS</a>
+              <a href='/register' className='header_2_a'>REGISTRATION</a>
             </nav>
           </div>
         </header>

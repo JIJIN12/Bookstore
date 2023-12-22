@@ -233,6 +233,7 @@
 
 .book_card{
    margin-bottom: 2rem;
+   border-radius: 25px;
 }
 
 .book_button:hover{

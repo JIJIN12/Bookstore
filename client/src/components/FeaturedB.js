@@ -25,7 +25,6 @@ export default function FeaturedB() {
             
             setfeatured_data(Response.data.Details)
         })
-        console.log('kk');
     },[])
     return (
         <div>
@@ -82,7 +81,7 @@ export default function FeaturedB() {
                                     
 
                                     <div className='d-flex justify-content-around mb-5 '>
-                                        <h3 className='sub-featuredbook_h1'>$120</h3>
+                                        <h3 className='sub-featuredbook_h1'>Price</h3>
                                         <button className='featured_card_button btn btn-primary'>Add to cart</button>
                                     </div>
                                 </div>
