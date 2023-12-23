@@ -63,7 +63,8 @@ export const get_cart = createAsyncThunk('getfav', async (id) => {
 
 
 
-export const delete_cart = createAsyncThunk('deltefav', async (id) => {
+export const delete_cart = createAsyncThunk('deletecart', async (id) => {
+    console.log('deletecart');
     const response = await fetch(`https://bookstore-7000.onrender.com/cart/delete/${id}`, {
         method: 'POST',
         headers: {

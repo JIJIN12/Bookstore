@@ -35,6 +35,7 @@ import Addauthor from './components/Addauthor';
 import Authorpage from './page/Authorpage';
 import Addauthorpage from './page/Addauthorpage';
 import Addfeatured from './components/Addfeatured';
+import Cart from './components/Cart';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
         <Route path='/pdf' element={<Bookpdf/>} />
         <Route path='/profilecompo' element={<Profle/>} />
         <Route path='/addfeaturedcompo' element={<Addfeatured/>} />
+        <Route path='/cartcompo' element={<Cart/>} />
 
 
 
