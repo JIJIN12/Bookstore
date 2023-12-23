@@ -57,7 +57,8 @@ export default function BookB() {
         dispatch(post_favourite(id))
     }
 
-    const add_Cart = ()=>{
+    const add_Cart = (id)=>{
+        console.log(id);
         dispatch(post_cart(id))
     }
 
@@ -152,7 +153,7 @@ export default function BookB() {
                                                     </a>
                                                 </h3>
 
-                                                <button className='book_button btn btn-primary' onClick={add_Cart}>Add to Cart</button>
+                                                <button className='book_button btn btn-primary' onClick={()=>{add_Cart(data._id)}}>Add to Cart</button>
                                             </div>
                                         </div>
 

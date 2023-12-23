@@ -13,12 +13,8 @@ const token = localStorage.getItem('token')
 console.log(token);
 
 export const post_favourite = createAsyncThunk('postfavourite', async (id) => {
-    console.log('kkkk');
-    // const response = await axios.get(`https://bookstore-7000.onrender.com/favourite/${id}`, {
-    //     headers: {
-    //         'Authorization': `bearer ${token}`
-    //     },
-    // })
+    console.log('kkkk',id);
+   
     const response = await fetch(`https://bookstore-7000.onrender.com/favourite/${id}`, {
         method: 'GET',
         headers: {
