@@ -1,14 +1,15 @@
 const express = require('express')
 const { default: mongoose } = require('mongoose')
 const CheckAuth = require('../Middleware/CheckAuth')
-const favourite_model = require('../model/favouriteModel')
 const cart_model = require('../model/cartModel')
 const cartRouter = express.Router()
 
 cartRouter.get('/:id',CheckAuth,async function(req,res){
     try {
+        const userid = req.userData.id
+
         const book_id = req.params.id
-        const cartdata = await favourite_model.find({bookid:book_id})
+        const cartdata = await cart_model.find({bookid: book_id, userid: userid})
         if(cartdata[0]){
             return res.status(400).json({ success: false, error: true, Message: 'data already added' })
             
