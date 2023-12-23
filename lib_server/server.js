@@ -9,6 +9,7 @@ const featuredRouter = require("./src/route/featuredRouter");
 const loginRouter = require("./src/route/loginRouter");
 const registerRouter = require("./src/route/registerRouter");
 const profileRouter = require("./src/route/profileRouter");
+const cartRouter = require("./src/route/cartRouter");
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use("/featured", featuredRouter);
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/profile", profileRouter);
+app.use("/cart", cartRouter);
 
 const url =
   "mongodb+srv://jijinsuresh6:jijinsuresh6@cluster0.dh7smys.mongodb.net/BOOKSTORE_SERVER?retryWrites=true&w=majority";

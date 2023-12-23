@@ -5,12 +5,14 @@ import { postbook, postchecked } from './redux/slice/bookslice'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { post_favourite } from './redux/slice/favSlice'
+import { post_cart } from './redux/slice/cartSlice';
 export default function BookB() {
 
     const { id } = useParams()
     const dispatch = useDispatch()
     const { book_data, checked_data } = useSelector(state => state.book)
     const { Favourite_data } = useSelector(state => state.Favourite)
+    const {cart_data} = useSelector(state=>state.cart)
 
     const [showFullDescriptions, setShowFullDescriptions] = useState({});
 
@@ -53,6 +55,10 @@ export default function BookB() {
     const toggleColor = (id) => {
         console.log(id);
         dispatch(post_favourite(id))
+    }
+
+    const add_Cart = ()=>{
+        dispatch(post_cart(id))
     }
 
 
@@ -146,7 +152,7 @@ export default function BookB() {
                                                     </a>
                                                 </h3>
 
-                                                <button className='book_button btn btn-primary'>Buy</button>
+                                                <button className='book_button btn btn-primary' onClick={add_Cart}>Add to Cart</button>
                                             </div>
                                         </div>
 
