@@ -92,7 +92,7 @@ cartRouter.get("/useritems/:id", async function (req, res) {
 cartRouter.post("/delete/:id", async function (req, res) {
   try {
     const id = req.params.id;
-    console.log("id", id);
+    console.log("id");
     const delete_cart = await cart_model.deleteOne({ _id: id });
     if (delete_cart) {
       return res.status(200).json({
