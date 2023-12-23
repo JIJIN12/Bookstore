@@ -25,7 +25,7 @@ const navigate = useNavigate()
             <div className='icons'>
               <div className='search_title fas fa search'></div>
               <a href='/book/favourite' className='shpping_cart fas fa-heart'></a>
-              <a href='#' className='fas fa-shopping-cart'></a>
+              <a href='/cartcompo' className='fas fa-shopping-cart'></a>
               <a href='/profile' className='user fas fa-user'></a>
 
 

@@ -1,20 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { delete_cart, get_cart } from "./redux/slice/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 export default function Cart() {
+  const [showFullDescriptions, setShowFullDescriptions] = useState({});
   const user_id = localStorage.getItem("userid");
   const dispatch = useDispatch();
   const { selected_data1 } = useSelector((state) => state.cart);
   console.log(selected_data1);
-
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(get_cart(user_id));
   }, []);
 
   const rem_cart = (id) => {
     dispatch(delete_cart(id));
-    window.location.reload();
+    navigate("/cart");
   };
   return (
     <div>
@@ -32,8 +34,29 @@ export default function Cart() {
                   <h5 className="card-title fav_h5">{data.bookname}</h5>
                   <p>Genre :{data.bookgenre} </p>
                   <p>Author :{data.author} </p>
-                  <p className="card-text cart_card_P">
-                    Description:{data.bookdescription}
+                  {/* <p className="card-text book_card_P">
+                                                        Description:{data.bookdescription}
+                                                    </p> */}
+                  <p className="card-text book_card_P">
+                    Description:{" "}
+                    {showFullDescriptions[data._id]
+                      ? data.bookdescription
+                      : `${data.bookdescription.slice(0, 200)}... `}
+                    {data.bookdescription.length > 200 && (
+                      <a
+                        href="#toggle-description"
+                        onClick={() =>
+                          setShowFullDescriptions((prevState) => ({
+                            ...prevState,
+                            [data._id]: !prevState[data._id],
+                          }))
+                        }
+                      >
+                        {showFullDescriptions[data._id]
+                          ? "Show Less"
+                          : "Show More"}
+                      </a>
+                    )}
                   </p>
 
                   <div className="d-flex justify-content-around mb-5 ">
