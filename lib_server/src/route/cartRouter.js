@@ -7,7 +7,7 @@ const cartRouter = express.Router()
 cartRouter.get('/:id',CheckAuth,async function(req,res){
     try {
         const userid = req.userData.id
-
+console.log('cart');
         const book_id = req.params.id
         const cartdata = await cart_model.find({bookid: book_id, userid: userid})
         if(cartdata[0]){
