@@ -33,7 +33,7 @@ export default function FeaturedB() {
                     <h1 className='featured_h1'>Bestsellers</h1>
                 </div>
                 <h4 className='featured_h4'>Our most popular products based on sales.Updated frequently.</h4>
-                <Link to={'/book/addbook'}> <button class="addfeatured_button" role="button">Addbook</button></Link><br/>
+                <Link to={'/featured/addfeatured'}> <button class="addfeatured_button" role="button">Addbook</button></Link><br/>
 
                 <div className='featuredgrid'>
                     <div className=' book_option'>

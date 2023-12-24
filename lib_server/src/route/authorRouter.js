@@ -87,4 +87,60 @@ authorRouter.post('/uploads', upload.single('file'), async function (req, res) {
 
     }
 })
+
+authorRouter.post('/check',async function(req,res){
+    try {
+        const selectedGenre = Object.keys(req.body);
+        console.log(selectedGenre);
+        let filteredbook = [];
+
+        if (selectedGenre == 0) {
+            filteredbook = await authormodel.find()
+
+        }
+
+        else {
+            for (const bookgenre of selectedGenre) {
+                if (bookgenre == 'action') {
+                    const actionbook = await authormodel.find({ bookgenre: 'action' })
+                    filteredbook = filteredbook.concat(actionbook)
+                }
+                else if (bookgenre == 'fantasy') {
+                    const fantasybook = await authormodel.find({ bookgenre: 'fantasy' })
+                    filteredbook = filteredbook.concat(fantasybook)
+                }
+                else if (bookgenre == 'fiction') {
+                    const fictionbook = await authormodel.find({ bookgenre: 'fiction' })
+                    filteredbook = filteredbook.concat(fictionbook)
+                }
+                else if (bookgenre == 'romance') {
+                    const romancebook = await authormodel.find({ bookgenre: 'romance' })
+                    filteredbook = filteredbook.concat(romancebook)
+                }
+                else if (bookgenre == 'scifi') {
+                    const scifibook = await authormodel.find({ bookgenre: 'scifi' })
+                    filteredbook = filteredbook.concat(scifibook)
+                }
+                else if (bookgenre == 'thriller') {
+                    const thrillerbook = await authormodel.find({ bookgenre: 'thriller' })
+                    filteredbook = filteredbook.concat(thrillerbook)
+                }
+
+            }
+
+        }
+        console.log(filteredbook);
+
+
+        if (filteredbook.length > 0) {
+            return res.status(200).json({ success: true, error: false, Details: filteredbook })
+        }
+        else {
+            return res.status(400).json({ success: false, error: true, Message: ' genre error' })
+
+        }
+    } catch (error) {
+        
+    }
+})
 module.exports = authorRouter

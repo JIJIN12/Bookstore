@@ -68,7 +68,7 @@ export default function Addfeatured() {
             className="featured_form"
             encType="multipart/form-data"
           >
-            <h3 className="featured_title">Sign in</h3>
+            <h3 className="featured_title"> FEATURED BOOKS FORM</h3>
             <span>userid</span>
             <input
               type="text"
@@ -82,7 +82,7 @@ export default function Addfeatured() {
             <span>Book Name</span>
             <input
               type="text"
-              name="featuredname"
+              name="bookname"
               className="box"
               placeholder="Enter  bookname"
               onChange={featured_input}
@@ -141,12 +141,7 @@ export default function Addfeatured() {
               className="featured_btn"
               onClick={featured_submit}
             />
-            <p>
-              forget password?<a href="#">Click here</a>
-            </p>
-            <p>
-              Dont't have an account?<a href="#">Click here</a>
-            </p>
+            
           </form>
         </div>
       </div>

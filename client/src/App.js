@@ -37,6 +37,7 @@ import Addauthorpage from './page/Addauthorpage';
 import Addfeatured from './components/Addfeatured';
 import Cart from './components/Cart';
 import Cartpage from './page/Cartpage';
+import Addfeaturedpage from './page/Addfeaturedpage';
 
 
 function App() {
@@ -83,6 +84,7 @@ function App() {
         <Route path='/featured' element={<Featuredpage />} />
         <Route path='/book/addbook' element={<Addbookpage />} />
         <Route path='/author/addauthor' element={<Addauthorpage />} />
+        <Route path='/featured/addfeatured' element={<Addfeaturedpage />} />
         <Route path='/book/favourite' element={<Favpage />} />
         <Route path='/profile' element={<Profilepage />} />
         <Route path='/cart' element={<Cartpage />} />

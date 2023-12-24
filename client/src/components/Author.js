@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function Author() {
     const [showFullDescriptions1, setshowFullDescriptions1] = useState({});
 
-    const [checked1, set_checked] = useState({})
+    const [checkedauthor, set_checkedauthor] = useState({})
     const [authordata, set_authordata] = useState([])
     console.log(authordata);
 
@@ -15,15 +15,22 @@ export default function Author() {
     const authorgenre_input = async (event) => {
         const { name, value } = event.target
         if (event.target.checked) {
-            set_checked({ ...checked1, [name]: value })
+            set_checkedauthor({ ...checkedauthor, [name]: value })
         }
 
         else {
-            delete checked1[event.target.name]
-            set_checked(checked1)
-            // dispatch(postchecked(checked1))
+            delete checkedauthor[event.target.name]
+            set_checkedauthor(checkedauthor)
+            axios.post('https://bookstore-7000.onrender.com/author/check',checkedauthor).then((Response)=>{
+                console.log(Response.data.Details);
+            })
         }
     }
+    useEffect(() => {
+        axios.post('https://bookstore-7000.onrender.com/author/check').then((Response)=>{
+            console.log(Response.data.Details);
+        })
+      }, [checkedauthor]);
 
     useEffect(() => {
         axios.get('https://bookstore-7000.onrender.com/author').then((Response) => {
@@ -116,7 +123,7 @@ export default function Author() {
                                                                 </a>
                                                             </h3>
 
-                                                            <button className='author_button btn btn-primary'>Buy</button>
+                                                            <button className='author_button btn btn-primary' >Details</button>
                                                         </div>
                                                     </div>
 

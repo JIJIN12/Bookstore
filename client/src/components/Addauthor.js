@@ -36,7 +36,7 @@ export default function Addauthor() {
         <div className='container'>
           <div className='author-form-container'>
             <form action='' className='author_form' encType='multipart/form-data' >
-              <h3 className='author_title'>Sign in</h3>
+              <h3 className='author_title'>AUTHOR FORM</h3>
               {/* <span >userid</span>
             <input type='text' name='user_id' className='box' value={userid} placeholder='Enter your Username' onChange={author_input} disabled /> */}
               <span >author Name</span>
