@@ -45,7 +45,7 @@
 
 .featured_grid_wrap {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     margin-bottom: 15rem;
 
 }
@@ -73,7 +73,7 @@
 
 @media screen and (max-width: 1500px) {
     .featured_grid_wrap_row {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 }
 

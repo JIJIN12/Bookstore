@@ -3,7 +3,7 @@ import "./BookB.css";
 import { ToastContainer, toast } from "react-toastify";
 import { postbook, postchecked } from "./redux/slice/bookslice";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { post_favourite } from "./redux/slice/favSlice";
 import { post_cart } from "./redux/slice/cartSlice";
 export default function BookB() {
@@ -29,6 +29,8 @@ export default function BookB() {
   useEffect(() => {
     dispatch(postbook());
   }, []);
+
+  const navigate = useNavigate()
 
   const bookgenre_input = async (event) => {
     const { name, value } = event.target;
@@ -151,6 +153,7 @@ export default function BookB() {
                   <div className="col book_col">
                     <div className="card book_card" style={{ width: "18rem" }}>
                       <img
+                       onClick={()=>{navigate('/product')}}
                         src={data.image}
                         className="card-img-top card_img"
                         alt="..."

@@ -38,6 +38,8 @@ import Addfeatured from './components/Addfeatured';
 import Cart from './components/Cart';
 import Cartpage from './page/Cartpage';
 import Addfeaturedpage from './page/Addfeaturedpage';
+import Product from './components/Product';
+import Productpage from './page/Productpage';
 
 
 function App() {
@@ -64,6 +66,7 @@ function App() {
         <Route path='/profilecompo' element={<Profle/>} />
         <Route path='/addfeaturedcompo' element={<Addfeatured/>} />
         <Route path='/cartcompo' element={<Cart/>} />
+        <Route path='/productcompo' element={<Product/>} />
 
 
 
@@ -88,6 +91,7 @@ function App() {
         <Route path='/book/favourite' element={<Favpage />} />
         <Route path='/profile' element={<Profilepage />} />
         <Route path='/cart' element={<Cartpage />} />
+        <Route path='/product' element={<Productpage />} />
       </Routes>
     </BrowserRouter>
   );
