@@ -8,6 +8,7 @@ const navigate = useNavigate()
     if(token==null){
       navigate('/login')
     }
+   
   },[])
   return (
     <div>
@@ -25,7 +26,7 @@ const navigate = useNavigate()
             <div className='icons'>
               <div className='search_title fas fa search'></div>
               <a href='/book/favourite' className='shpping_cart fas fa-heart'></a>
-              <a href='/cartcompo' className='fas fa-shopping-cart'></a>
+              <a href='/cartcompo' className='fa-solid fa-book'></a>
               <a href='/profile' className='user fas fa-user'></a>
 
 
@@ -48,7 +49,7 @@ const navigate = useNavigate()
 
 
           <div className='header_2'>
-            <nav className='navbar'>
+            <nav className='navbar '>
               <a href='/' className='header_2_a'>HOME</a>
               <a href='/featured' className='header_2_a'>FEATURED</a>
               {/* <a href='/arrival ' className='header_2_a'>ARRIVALS</a> */}

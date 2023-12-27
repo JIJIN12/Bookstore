@@ -174,7 +174,10 @@ html::-webkit-scrollbar-thumb {
         scroll-padding-top: 0;
     }
     .header .header_2 {
-        display: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
     }
 
     .bottom_navbar{
