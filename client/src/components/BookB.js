@@ -153,7 +153,7 @@ export default function BookB() {
                   <div className="col book_col">
                     <div className="card book_card" style={{ width: "18rem" }}>
                       <img
-                       onClick={()=>{navigate('/product')}}
+                       onClick={()=>{navigate()}}
                         src={data.image}
                         className="card-img-top card_img"
                         alt="..."
