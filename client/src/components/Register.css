@@ -11,7 +11,12 @@
     height: 100%;
     width: 100%;
 }
-
+.disabled{
+    color: gray;
+      pointer-events: none; 
+      text-decoration: none; 
+      cursor: not-allowed; 
+}
 .register_btn{
     margin-top: 1rem;
     display: inline-block;

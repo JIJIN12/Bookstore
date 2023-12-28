@@ -6,12 +6,10 @@ import Navbottom from '../components/Navbottom'
 export default function Loginpage() {
   return (
     <div>
-      <Navtop/>
       <div className='login-container'>
       <Login/>
 
       </div>
-      <Navbottom/>
     </div>
   )
 }

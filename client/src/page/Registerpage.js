@@ -6,9 +6,7 @@ import Navbottom from '../components/Navbottom'
 export default function Registerpage() {
   return (
     <div>
-      <Navtop/>
       <Register/>
-      <Navbottom/>
     </div>
   )
 }

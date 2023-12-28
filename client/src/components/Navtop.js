@@ -2,16 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import { useNavigate } from "react-router-dom";
 export default function Navtop() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const token = localStorage.getItem("token");
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (token) {
-      setLoggedIn(true);
-    } else {
-      navigate("/login");
-    }
-  }, []);
+  
+
+
   return (
     <div>
       <div className="">
@@ -37,38 +30,28 @@ export default function Navtop() {
                 href="/book/favourite"
                 className="shpping_cart fas fa-heart"
               ></a>
-              <a href="/cartcompo" className="fa-solid fa-book"></a>
+              <a href="/cart" className="fa-solid fa-book"></a>
               <a href="/profile" className="user fas fa-user"></a>
-
-              {/* <div className='dropdown'>
-                <a className='user fas fa-user' id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">jhkjhk</a>
-
-                <div className="dropdown-menu" aria-labelledby="">
-                  <button className="dropdown-item" >Logout</button>
-                  <button className="dropdown-item"  ><a href='/profile' style={{ textDecoration: "none", color: "black" }}>Profile</a></button>
-                </div>
-              </div> */}
             </div>
           </div>
 
           <div className="header_2">
             <nav className="navbar ">
-              <a href="/" className="header_2_a">
-                HOME
-              </a>
-              <a href="/featured" className="header_2_a">
-                FEATURED
-              </a>
-              {/* <a href='/arrival ' className='header_2_a'>ARRIVALS</a> */}
-              <a href="/author" className="header_2_a">
-                AUTHOR
-              </a>
-              <a href="/book" className="header_2_a">
-                BOOKS
-              </a>
-              <a href="/register" className="header_2_a">
-                REGISTRATION
-              </a>
+              <>
+                <a href="/" className="header_2_a">
+                  HOME
+                </a>
+                <a href="/featured" className="header_2_a">
+                  FEATURED
+                </a>
+                <a href="/author" className="header_2_a">
+                  AUTHOR
+                </a>
+                <a href="/book" className="header_2_a">
+                  BOOKS
+                </a>
+               
+              </>
             </nav>
           </div>
         </header>

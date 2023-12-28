@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Homer.css'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -7,7 +7,20 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
+import { useNavigate } from 'react-router-dom'
 export default function Homer() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (token) {
+      setLoggedIn(true);
+    } else {
+      navigate('/login')
+    }
+  }, []);
+  
   return (
     <div>
       <section className='home'>

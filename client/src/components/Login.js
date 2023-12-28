@@ -27,6 +27,32 @@ const navigate = useNavigate()
   
   return (
     <div>
+       <div className="header">
+        <div className="header_1">
+          <a href="#" className="logo">
+            <i className="book_title fas fa-book"></i>Bookly
+          </a>
+
+          <form action="" className="search_form">
+            <input
+              type="search"
+              className="search_input"
+              name=""
+              placeholder="search here"
+              disabled
+            />
+            <label className="search_title fas fa-search"></label>
+          </form>
+
+          <div className="icons">
+            <div className="search_title fas fa search"></div>
+            <a href="/book/favourite" className="shpping_cart fas fa-heart disabled" ></a>
+            <a href="/cartcompo" className="fa-solid fa-book disabled"></a>
+            <a href="/profile" className="user fas fa-user disabled"></a>
+          </div>
+        </div>
+      </div>
+
       <div className='login-form-container'>
         <form action='' className='login_form'>
             <h3 className='login_title'>Sign in</h3>
