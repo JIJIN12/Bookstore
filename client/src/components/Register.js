@@ -4,12 +4,14 @@ import "./Register.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { registrataion } from "./redux/slice/registerslice";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 export default function Register() {
   const dispatch = useDispatch();
   const { register_data } = useSelector((state) => state.register);
 
   const [registerstate, set_register] = useState({});
-
+  const navigate = useNavigate();
   const register_input = (event) => {
     const { name, value } = event.target;
     set_register({ ...registerstate, [name]: value });
@@ -18,10 +20,25 @@ export default function Register() {
   const register_submit = (event) => {
     event.preventDefault();
     dispatch(registrataion(registerstate));
+    // navigate("/");
   };
 
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
       <div className="header">
         <div className="header_1">
           <a href="#" className="logo">
@@ -41,7 +58,10 @@ export default function Register() {
 
           <div className="icons">
             <div className="search_title fas fa search"></div>
-            <a href="/book/favourite" className="shpping_cart fas fa-heart disabled" ></a>
+            <a
+              href="/book/favourite"
+              className="shpping_cart fas fa-heart disabled"
+            ></a>
             <a href="/cartcompo" className="fa-solid fa-book disabled"></a>
             <a href="/profile" className="user fas fa-user disabled"></a>
           </div>

@@ -6,6 +6,7 @@ const registerRouter = express.Router()
 
 registerRouter.post('/', async function (req, res) {
     try {
+        console.log('ll');
         const OldEmail = await registermodel.findOne({ Email: req.body.Email })
         if (OldEmail) {
             return res.status(400).json({ success: false, error: true, Message: "Email already exists" })

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
     Loading:false,
@@ -18,7 +19,20 @@ export const registrataion = createAsyncThunk('registrataion',async (value)=>{
     })
 
     console.log(response);
-    return response.json()
+    toast.success('Registration Succesfull', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+    setTimeout(()=>{
+
+        return response.json()
+    },0)
 })
 
 
@@ -32,6 +46,7 @@ export const registerSlice = createSlice({
         builder.addCase(registrataion.fulfilled,(state,action)=>{
             state.Loading = false
             state.register_data  = action.payload
+            console.log(action);
         })
         builder.addCase(registrataion.rejected,(state,action)=>{
             state.error = true
