@@ -21,7 +21,7 @@ const navigate = useNavigate()
     event.preventDefault()
 
     dispatch(postLogin(loginstate))
-    // navigate('/')
+    navigate('/')
   }
 
   

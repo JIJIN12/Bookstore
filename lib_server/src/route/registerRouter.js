@@ -19,6 +19,7 @@ registerRouter.post('/', async function (req, res) {
         if (oldusername) {
             return res.status(400).json({ success: false, error: true, Message: "Username already exists" })
         }
+        console.log('oldusename');
         const hashpassword = await bcrypt.hash(req.body.password, 12)
         console.log(hashpassword);
         console.log('11');
